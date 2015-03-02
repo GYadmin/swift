@@ -53,6 +53,61 @@ println(p0!.name)
 
 println(p0?.whoami())
 
+/*
+    （4）通过可选链调用下表索引
+*/
+//可选值？.属性
+//可选值?.方法
+// 如何调用下表方法？
+// 可选值?[]
+class MyStringHash {
+    subscript (x:String) ->Int {
+        return x.hashValue - 1000
+    }
+}
+
+var msh = MyStringHash()
+var mshop:MyStringHash?
+mshop = msh
+println(msh["abc"])
+println(mshop?["abc"])
+
+
+var array:[Int]? = [1,2,3,4,5]
+println(array?[0])
+
+/*
+    (5)可选链复制操作
+*/
+
+class Person2 {
+    var name = ""
+    func whoami() ->String {
+        println("My name is \(name)")
+        return name
+    }
+    init(name:String){
+        self.name = name
+    }
+}
+
+var p2:Person2?
+var p3:Person2 = Person2(name: "Tom")
+
+p2 = p3
+p2?.name = "Lom"
+
+println(p3.name)
+
+// 判断赋值操作是否成功
+
+let res:Void? = (p2?.name = "bb")
+println(res)
+if (p0?.name = "List") != nil {
+    println("success")
+}
+
+
 
 
 
