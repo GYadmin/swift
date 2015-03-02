@@ -107,6 +107,37 @@ if (p0?.name = "List") != nil {
     println("success")
 }
 
+/*
+    (6) 当通过可选链请求的数据为可选类型时可选链的返回值情况
+    返回值仍然是可选值 不会增加可选性
+*/
+
+class CreditCard {
+    var number: Int
+    init(number: Int){
+        self.number = number
+    }
+}
+
+class Person3 {
+    var card:CreditCard?
+    init(card:CreditCard){
+        self.card = card
+    }
+}
+/*
+var x: Int? = 10
+var y:Int?? = x
+*/
+
+var card:CreditCard? = CreditCard(number: 111)
+var ccard:CreditCard?? = card
+
+var p5:Person3? = Person3(card:CreditCard(number: 3333))
+p5?.card
+
+
+
 
 
 
